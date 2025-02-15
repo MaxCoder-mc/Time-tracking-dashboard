@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Time tracking dashboard</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <main class="dashboard">
+      <div class="dashboard__header">
+        <div class="profile">
+          <img
+            src="./images/image-jeremy.png"
+            alt="Jeremy Robson"
+            loading="lazy"
+          />
+          <div class="profile__info">
+            <span class="profile__info--report">Report for</span>
+            <h1 class="profile__info--name">Jeremy Robson</h1>
+          </div>
+        </div>
+
+        <div class="timeframes">
+          <input
+            type="radio"
+            name="timeframe"
+            value="daily"
+            id="daily"
+            aria-label="Daily"
+          />
+          <label for="daily">Daily</label>
+
+          <input
+            type="radio"
+            name="timeframe"
+            value="weekly"
+            id="weekly"
+            aria-label="Weekly"
+            checked
+          />
+          <label for="weekly">Weekly</label>
+
+          <input
+            type="radio"
+            name="timeframe"
+            value="monthly"
+            id="monthly"
+            aria-label="Monthly"
+          />
+          <label for="monthly">Monthly</label>
+        </div>
+      </div>
+
+      <ul id="output" class="activities"></ul>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", async () => {
+        const radios = document.querySelectorAll("input[name='timeframe']");
+        const output = document.getElementById("output");
+        let data = [];
+
+        try {
+          const response = await fetch("./data.json");
+          data = await response.json();
+          updateDisplay("weekly");
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+
+        function updateDisplay(timeframe) {
+          output.innerHTML = ""; // Clear previous data
+
+          data.forEach(({ title, timeframes }) => {
+            const className = title.toLowerCase().replace(/\s+/g, ""); // Fix: Use regex for multiple spaces
+            const { current, previous } = timeframes[timeframe];
+            const timeframeText = {
+              daily: "Yesterday",
+              weekly: "Last Week",
+              monthly: "Last Month",
+            }[timeframe];
+
+            const html = `
+              <li class="activity ${className}">
+                <div class="activity__header">
+                  <h2 class="activity__header--title">${title}</h2>
+                  <button class="activity__header--more" aria-label="More options">
+                    <img src="./images/icon-ellipsis.svg" alt="More">
+                  </button>
+
+                </div>
+                <div class="activity__time">
+                  <span class="activity__time--current">${current}hrs</span>
+                  <span class="activity__time--previous">${timeframeText} - ${previous}hrs</span>
+                </div>
+              </li>
+            `;
+            output.insertAdjacentHTML("beforeend", html);
+          });
+        }
+
+        radios.forEach((radio) =>
+          radio.addEventListener("change", (e) => updateDisplay(e.target.value))
+        );
+      });
+    </script>
+  </body>
+</html>
