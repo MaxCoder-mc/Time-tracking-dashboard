@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
     <main class="dashboard">
@@ -89,7 +89,7 @@
           output.innerHTML = ""; // Clear previous data
 
           data.forEach(({ title, timeframes }) => {
-            const className = title.toLowerCase().replace(/\s+/g, ""); // Fix: Use regex for multiple spaces
+            const dataType = title.toLowerCase().replace(/\s+/g, ""); // Fix: Use regex for multiple spaces
             const { current, previous } = timeframes[timeframe];
             const timeframeText = {
               daily: "Yesterday",
@@ -98,7 +98,7 @@
             }[timeframe];
 
             const html = `
-              <li class="activity ${className}">
+              <li class="activity" data-type="${dataType}">
                 <div class="activity__header">
                   <h2 class="activity__header--title">${title}</h2>
                   <button class="activity__header--more" aria-label="More options">
