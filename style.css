@@ -179,7 +179,7 @@ input[type="radio"]:checked + label {
 
 .activity {
   --_background: var(--background, var(--Blue));
-  --_icon: var(--icon, url("../images/icon-work.svg"));
+  --_icon: var(--icon, url("./images/icon-work.svg"));
 
   background-color: var(--Dark-blue);
   border-radius: 0.9375rem;
@@ -244,27 +244,27 @@ input[type="radio"]:checked + label {
 }
 .work::before {
   --_background: var(--Orange);
-  --_icon: url("../images/icon-work.svg");
+  --_icon: url("./images/icon-work.svg");
 }
 .play::before {
   --_background: var(--Soft-blue);
-  --_icon: url("../images/icon-play.svg");
+  --_icon: url("./images/icon-play.svg");
 }
 .study::before {
   --_background: var(--Light-red);
-  --_icon: url("../images/icon-study.svg");
+  --_icon: url("./images/icon-study.svg");
 }
 .exercise::before {
   --_background: var(--Lime-green);
-  --_icon: url("../images/icon-exercise.svg");
+  --_icon: url("./images/icon-exercise.svg");
 }
 .social::before {
   --_background: var(--Violet);
-  --_icon: url("../images/icon-social.svg");
+  --_icon: url("./images/icon-social.svg");
 }
 .selfcare::before {
   --_background: var(--Soft-orange);
-  --_icon: url("../images/icon-self-care.svg");
+  --_icon: url("./images/icon-self-care.svg");
 }
 
 /* ////////////////////////////////////////////// */
