@@ -242,27 +242,27 @@ input[type="radio"]:checked + label {
   border-radius: 0.9375rem 0.9375rem 0 0;
   z-index: -1;
 }
-.work::before {
+.activity[data-type="work"] {
   --_background: var(--Orange);
   --_icon: url("./images/icon-work.svg");
 }
-.play::before {
+.activity[data-type="play"] {
   --_background: var(--Soft-blue);
   --_icon: url("./images/icon-play.svg");
 }
-.study::before {
+.activity[data-type="study"] {
   --_background: var(--Light-red);
   --_icon: url("./images/icon-study.svg");
 }
-.exercise::before {
+.activity[data-type="exercise"] {
   --_background: var(--Lime-green);
   --_icon: url("./images/icon-exercise.svg");
 }
-.social::before {
+.activity[data-type="social"] {
   --_background: var(--Violet);
   --_icon: url("./images/icon-social.svg");
 }
-.selfcare::before {
+.activity[data-type="selfcare"] {
   --_background: var(--Soft-orange);
   --_icon: url("./images/icon-self-care.svg");
 }
