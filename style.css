@@ -179,7 +179,7 @@ input[type="radio"]:checked + label {
 
 .activity {
   --_background: var(--background, var(--Blue));
-  --_icon: var(--icon, url("./images/icon-work.svg"));
+  --_icon: var(--icon, url("images/icon-work.svg"));
 
   background-color: var(--Dark-blue);
   border-radius: 0.9375rem;
